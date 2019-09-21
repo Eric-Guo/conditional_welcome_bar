@@ -17,8 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV.fetch("PG_HOST", "db") %>
-  username: <%= ENV.fetch("PG_USER", "postgres") %>
+  host: <%= ENV.fetch("PG_HOST", "localhost") %>
   password: <%= ENV.fetch("PG_PASSWORD", "") %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -85,4 +84,5 @@ production:
   <<: *default
   database: welcome_bar_app_production
   username: welcome_bar_app
+  username: <%= ENV.fetch("PG_USER", "postgres") %>
   password: <%= ENV['WELCOME_BAR_APP_DATABASE_PASSWORD'] %>
